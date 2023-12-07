@@ -1,17 +1,28 @@
 package com.devsuperior.desafio.orm.entities;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tb_participante")
 public class Participante {
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	private String email;
-	
-	public Participante () {
-		
+
+	@ManyToMany(mappedBy = "participantes")
+	private Set<Atividade> atividades = new HashSet<>();
+
+	public Participante() {
+
 	}
-	
+
 	public Participante(Long id, String nome, String email) {
 		super();
 		this.id = id;
@@ -42,6 +53,12 @@ public class Participante {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	
+
+	public Set<Atividade> getAtividades() {
+		return atividades;
+	}
 
 	@Override
 	public int hashCode() {
@@ -59,10 +76,5 @@ public class Participante {
 		Participante other = (Participante) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
-	
-	
-		
 
 }

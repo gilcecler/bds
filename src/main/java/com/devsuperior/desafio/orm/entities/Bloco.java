@@ -3,18 +3,31 @@ package com.devsuperior.desafio.orm.entities;
 import java.time.Instant;
 import java.util.Objects;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tb_bloco")
 public class Bloco {
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant inicio;
+
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant fim;
-	
-	public Bloco () {
-		
+
+	@ManyToOne
+	@JoinColumn(name = "atividade_id")
+	private Atividade atividade;
+
+	public Bloco() {
+
 	}
 
 	public Bloco(Long id, Instant inicio, Instant fim) {
-		super();
 		this.id = id;
 		this.inicio = inicio;
 		this.fim = fim;
@@ -44,6 +57,14 @@ public class Bloco {
 		this.fim = fim;
 	}
 
+	public Atividade getAtividade() {
+		return atividade;
+	}
+
+	public void setAtividade(Atividade atividade) {
+		this.atividade = atividade;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -61,5 +82,4 @@ public class Bloco {
 		return Objects.equals(id, other.id);
 	}
 
-	
 }
