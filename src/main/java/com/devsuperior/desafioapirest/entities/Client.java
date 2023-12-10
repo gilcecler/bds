@@ -27,7 +27,7 @@ public class Client {
 	}
 	
 	public Client(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {
-		super();
+		
 		Id = id;
 		this.name = name;
 		this.cpf = cpf;
