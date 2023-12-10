@@ -9,6 +9,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.devsuperior.desafioapirest.dto.CustomErrorDTO;
+import com.devsuperior.desafioapirest.dto.ValidationErrorDTO;
 import com.devsuperior.desafioapirest.services.exceptions.DatabaseException;
 import com.devsuperior.desafioapirest.services.exceptions.ResourceNotFoundException;
 
