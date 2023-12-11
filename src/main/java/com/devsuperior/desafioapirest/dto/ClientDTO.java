@@ -2,14 +2,24 @@ package com.devsuperior.desafioapirest.dto;
 
 import java.time.LocalDate;
 
+
+
 import com.devsuperior.desafioapirest.entities.Client;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
 
 public class ClientDTO {
 	
 	private Long Id;
+	
+	@NotBlank(message = "Não pode ser vazio")
 	private String name;
+	
 	private String cpf;
 	private Double income;
+	
+	@PastOrPresent(message = "Não pode ser Data Futura")
 	private LocalDate birthDate;
 	private Integer children;
 	
